@@ -13,7 +13,7 @@ const IndexPage: NextPage = () => {
   }, []);
 
   return (
-    <div className="font-mplus">
+    <div className="font-mplus1">
       <h1 className="text-2xl">SMBR Cockpit Sample</h1>
       <p>{result}</p>
     </div>

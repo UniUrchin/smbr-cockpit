@@ -1,15 +1,13 @@
 /** @type {import('tailwindcss').Config} */
+
 module.exports = {
-  content: [
-    "./src/**/*.{js,ts,jsx,tsx,mdx}",
-  ],
+  content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
   theme: {
     extend: {
       fontFamily: {
-        mplus: ['M PLUS 1p'],
+        mplus1: ["var(--font-mplus1)"],
       },
     },
   },
   plugins: [],
-}
-
+};
