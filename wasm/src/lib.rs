@@ -1,5 +1,4 @@
 use core::slice::Iter;
-// use rand::Rng;
 use regex::Regex;
 use std::panic;
 use thiserror::Error as ThisError;
@@ -17,10 +16,11 @@ enum SmbrNeoCommand {
   DecrementValue,
   PrintChar,
   ReadInput,
-  // RandomInput,
   JumpForward,
   JumpBackward,
-  MemoryClear,
+  CopyValue,
+  PasteValue,
+  ClearValue,
 }
 
 impl SmbrNeoCommand {
@@ -32,10 +32,11 @@ impl SmbrNeoCommand {
       "とかげ" => Ok(SmbrNeoCommand::DecrementValue),
       "ねこ" => Ok(SmbrNeoCommand::PrintChar),
       "たぴおか" => Ok(SmbrNeoCommand::ReadInput),
-      // "ふろしき" => Ok(SmbrNeoCommand::RandomInput),
       "えびふらいのしっぽ" => Ok(SmbrNeoCommand::JumpForward),
       "あじふらいのしっぽ" => Ok(SmbrNeoCommand::JumpBackward),
-      "ざっそう" => Ok(SmbrNeoCommand::MemoryClear),
+      "すずめ" => Ok(SmbrNeoCommand::CopyValue),
+      "おばけ" => Ok(SmbrNeoCommand::PasteValue),
+      "ざっそう" => Ok(SmbrNeoCommand::ClearValue),
       _ => Err(SmbrNeoError::ParseError),
     }
   }
@@ -52,20 +53,20 @@ enum SmbrNeoError {
 }
 
 #[wasm_bindgen]
-pub fn run(code: &str, input: &str) -> String {
+pub fn run(code: &str, input: &str) -> Result<String, String> {
   panic::set_hook(Box::new(console_error_panic_hook::hook));
 
   let mut memory: Vec<u8> = vec![0; MEMORY_SIZE];
   let mut pointer: usize = 0;
   let mut index: usize = 0;
   let mut stack: Vec<usize> = Vec::new();
+  let mut copy: u8 = 0;
   let mut input: Iter<u8> = input.as_bytes().iter();
   let mut output: String = String::new();
-  // let mut rng = rand::thread_rng();
 
   let commands = match parse_code(code) {
     Ok(commands) => commands,
-    Err(e) => return e.to_string(),
+    Err(e) => return Err(e.to_string()),
   };
 
   while index < commands.len() {
@@ -91,7 +92,6 @@ pub fn run(code: &str, input: &str) -> String {
         Some(byte) => memory[pointer] = *byte,
         None => memory[pointer] = 0,
       },
-      // SmbrNeoCommand::RandomInput => memory[pointer] = (rng.gen_range(0.0, 1.0) * 256.0) as u8,
       SmbrNeoCommand::JumpForward => {
         let mut depth = 1;
         let mut tmp = index;
@@ -99,7 +99,7 @@ pub fn run(code: &str, input: &str) -> String {
         while depth > 0 {
           tmp += 1;
           if tmp >= commands.len() {
-            return SmbrNeoError::InvalidLoopError.to_string();
+            return Err(SmbrNeoError::InvalidLoopError.to_string());
           }
           match commands[tmp] {
             SmbrNeoCommand::JumpForward => depth += 1,
@@ -117,25 +117,27 @@ pub fn run(code: &str, input: &str) -> String {
         0 => {
           match stack.pop() {
             Some(_) => (),
-            None => return SmbrNeoError::InvalidLoopError.to_string(),
+            None => return Err(SmbrNeoError::InvalidLoopError.to_string()),
           };
         }
         _ => match stack.last() {
           Some(value) => index = *value,
-          None => return SmbrNeoError::InvalidLoopError.to_string(),
+          None => return Err(SmbrNeoError::InvalidLoopError.to_string()),
         },
       },
-      SmbrNeoCommand::MemoryClear => memory[pointer] = 0,
+      SmbrNeoCommand::CopyValue => copy = memory[pointer],
+      SmbrNeoCommand::PasteValue => memory[pointer] = copy,
+      SmbrNeoCommand::ClearValue => memory[pointer] = 0,
     }
     index += 1;
   }
 
-  return output;
+  return Ok(output);
 }
 
 fn parse_code(code: &str) -> Result<Vec<SmbrNeoCommand>, SmbrNeoError> {
   let re = Regex::new(
-    r"しろくま|とんかつ|ぺんぎん\?|とかげ|ねこ|ざっそう|たぴおか|ふろしき|えびふらいのしっぽ|あじふらいのしっぽ",
+    r"しろくま|とんかつ|ぺんぎん\?|とかげ|ねこ|たぴおか|えびふらいのしっぽ|あじふらいのしっぽ|すずめ|おばけ|ざっそう",
   )?;
   return Ok(
     re.find_iter(code)
