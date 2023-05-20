@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "build:wasm": "wasm-pack build wasm --target web --release",
-    "start": "next start"
+    "start": "next start",
+    "netlify": "netlify",
+    "deploy": "yarn build:wasm && yarn build && next export && netlify deploy --prod"
   },
   "dependencies": {
     "@types/node": "18.16.3",
@@ -19,7 +21,9 @@
     "wasm": "file:wasm/pkg"
   },
   "devDependencies": {
+    "@netlify/plugin-nextjs": "^4.37.1",
     "autoprefixer": "^10.4.14",
+    "netlify-cli": "^15.1.1",
     "postcss": "^8.4.23",
     "prettier": "^2.8.8",
     "prettier-plugin-tailwindcss": "^0.2.8",

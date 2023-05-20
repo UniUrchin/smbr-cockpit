@@ -37,3 +37,6 @@ next-env.d.ts
 # wasm
 /wasm/target
 /wasm/pkg
+
+# Local Netlify folder
+.netlify
