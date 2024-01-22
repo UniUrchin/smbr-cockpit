@@ -42,6 +42,7 @@ export const theme = extendTheme({
         800: arwesTheme.colors.secondary.text(8),
         900: arwesTheme.colors.secondary.text(9),
       },
+      secondary: "#FFFFFF",
     },
     accent: {
       success: {

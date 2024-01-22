@@ -3,11 +3,15 @@
 import { Animated, Text, aa, aaVisibility } from "@arwes/react";
 import { Animator } from "@arwes/react-animator";
 import { Box, Flex, Heading, Image, useToken } from "@chakra-ui/react";
+import { useRouter } from "next/navigation";
+import { PlayButton } from "@/components/PlayButton";
 
 export default function AppPage() {
+  const router = useRouter();
+
   return (
     <Flex alignItems="center" justifyContent="center" height="100%">
-      <Animator>
+      <Animator manager="stagger" duration={{ stagger: 0.2 }}>
         <Animated animated={[aaVisibility(), aa("y", -100, 0)]}>
           <Flex
             alignItems="center"
@@ -43,6 +47,15 @@ export default function AppPage() {
                 running SMBR (sumikko-brain), a derivative language of Brain F**k. Let&aposs Dive
                 into the world of SMBR programming!
               </Text>
+            </Animator>
+            <Animator>
+              <Animated animated={[aaVisibility(), aa("y", -24, 0)]}>
+                <PlayButton
+                  width="148px"
+                  height="48px"
+                  onClick={() => router.push("/playground")}
+                />
+              </Animated>
             </Animator>
           </Flex>
         </Animated>
