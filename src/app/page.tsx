@@ -4,15 +4,25 @@ import { Animated, Text, aa, aaVisibility } from "@arwes/react";
 import { Animator } from "@arwes/react-animator";
 import { Box, Flex, Heading, Image, useToken } from "@chakra-ui/react";
 import { useRouter } from "next/navigation";
+import { useEffect } from "react";
+import { useSound } from "use-sound";
+
 import { PlayButton } from "@/components/PlayButton";
 
 export default function AppPage() {
   const router = useRouter();
+  const [playOpenMenuSound] = useSound("/sounds/open-menu.mp3");
+  const [playButtonClickSound] = useSound("/sounds/button-click.mp3");
+
+  useEffect(() => {
+    let tid = setTimeout(() => playOpenMenuSound(), 500);
+    return () => clearTimeout(tid);
+  }, [playOpenMenuSound]);
 
   return (
     <Flex alignItems="center" justifyContent="center" height="100%">
       <Animator manager="stagger" duration={{ stagger: 0.2 }}>
-        <Animated animated={[aaVisibility(), aa("y", -100, 0)]}>
+        <Animated animated={[aaVisibility(), aa("y", -24, 0)]}>
           <Flex
             alignItems="center"
             justifyContent="center"
@@ -39,12 +49,13 @@ export default function AppPage() {
             <Animator>
               <Text
                 style={{
-                  color: useToken("colors", ["text.primary.500"])[0],
+                  color: useToken("colors", ["text.primary.700"])[0],
                   fontFamily: "var(--chakra-fonts-monomaniacOne)",
+                  textAlign: "center",
                 }}
               >
                 SMBR Cockpit is a web application that brings the simplicity and ease of use to
-                running SMBR (sumikko-brain), a derivative language of Brain F**k. Let&aposs Dive
+                running SMBR (sumikko-brain), a derivative language of Brain F**k. Let&apos;s Dive
                 into the world of SMBR programming!
               </Text>
             </Animator>
@@ -53,7 +64,11 @@ export default function AppPage() {
                 <PlayButton
                   width="148px"
                   height="48px"
-                  onClick={() => router.push("/playground")}
+                  onClick={() => {
+                    playButtonClickSound();
+                    router.push("/playground");
+                  }}
+                  withIcon
                 />
               </Animated>
             </Animator>
