@@ -1,6 +1,6 @@
 import { createAppTheme } from "@arwes/react";
 import { extendTheme } from "@chakra-ui/react";
-import { Monomaniac_One } from "next/font/google";
+import { Monomaniac_One, DotGothic16 } from "next/font/google";
 
 const arwesTheme = createAppTheme();
 
@@ -10,9 +10,16 @@ const monomaniacOne = Monomaniac_One({
   variable: "--font-monomaniac-one",
 });
 
+const dotGothic16 = DotGothic16({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-dot-gothic-16",
+});
+
 export const theme = extendTheme({
   fonts: {
     monomaniacOne: monomaniacOne.style.fontFamily,
+    dotGothic16: dotGothic16.style.fontFamily,
   },
   colors: {
     brand: {
@@ -95,6 +102,8 @@ export const theme = extendTheme({
       },
     },
     background: {
+      primary: "#BAEB54",
+      secondary: "#FFFFFF",
       transparent: {
         primary: "rgba(186, 235, 84, 0.3)",
         secondary: "rgba(237, 238, 234, 0.3)",

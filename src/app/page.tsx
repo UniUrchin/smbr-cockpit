@@ -11,6 +11,7 @@ import { PlayButton } from "@/components/PlayButton";
 
 export default function AppPage() {
   const router = useRouter();
+
   const [playOpenMenuSound] = useSound("/sounds/open-menu.mp3");
   const [playButtonClickSound] = useSound("/sounds/button-click.mp3");
 
