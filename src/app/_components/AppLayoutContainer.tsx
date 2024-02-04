@@ -8,7 +8,7 @@ import { ChakraProvider, Flex, useToken } from "@chakra-ui/react";
 import { useState } from "react";
 import { useSound } from "use-sound";
 
-import { PlayButton } from "@/components/PlayButton";
+import { MovingButton } from "@/components/MovingButton";
 import { theme } from "@/styles/theme";
 
 export const AppLayoutContainer = ({ children }: { children: React.ReactNode }) => {
@@ -41,7 +41,7 @@ export const AppLayoutContainer = ({ children }: { children: React.ReactNode }) 
                 Please press &apos;Agree&apos; if that&apos;s okay.
               </Text>
             </Animator>
-            <PlayButton
+            <MovingButton
               width="120px"
               height="48px"
               onClick={() => {
@@ -50,7 +50,7 @@ export const AppLayoutContainer = ({ children }: { children: React.ReactNode }) 
               }}
             >
               Agree
-            </PlayButton>
+            </MovingButton>
           </Flex>
         </Animated>
       </Animator>

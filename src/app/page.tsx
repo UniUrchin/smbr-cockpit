@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { useSound } from "use-sound";
 
-import { PlayButton } from "@/components/PlayButton";
+import { MovingButton } from "@/components/MovingButton";
 
 export default function AppPage() {
   const router = useRouter();
@@ -50,7 +50,7 @@ export default function AppPage() {
             <Animator>
               <Text
                 style={{
-                  color: useToken("colors", ["text.primary.700"])[0],
+                  color: useToken("colors", ["text.primary.800"])[0],
                   fontFamily: "var(--chakra-fonts-monomaniacOne)",
                   textAlign: "center",
                 }}
@@ -62,14 +62,14 @@ export default function AppPage() {
             </Animator>
             <Animator>
               <Animated animated={[aaVisibility(), aa("y", -24, 0)]}>
-                <PlayButton
+                <MovingButton
                   width="148px"
                   height="48px"
                   onClick={() => {
                     playButtonClickSound();
                     router.push("/playground");
                   }}
-                  withIcon
+                  withicon={+true}
                 />
               </Animated>
             </Animator>

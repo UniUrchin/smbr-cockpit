@@ -9,6 +9,7 @@ import {
   Tabs,
 } from "@chakra-ui/react";
 import { ReactElement } from "react";
+import { useSound } from "use-sound";
 
 export const CockpitPanel = ({
   tabNames,
@@ -18,6 +19,8 @@ export const CockpitPanel = ({
   tabNames: string[];
   panelElements: ReactElement[];
 } & FlexProps) => {
+  const [playButtonClickSound] = useSound("/sounds/button-click.mp3");
+
   const CockpitPanelTab = (props: TabProps) => {
     return (
       <Tab
@@ -30,6 +33,7 @@ export const CockpitPanel = ({
         borderColor="brand.primary.400"
         _selected={{ color: "text.secondary", backgroundColor: "brand.primary.400" }}
         backgroundColor="background.secondary"
+        onClick={() => playButtonClickSound()}
       >
         {props.children}
       </Tab>

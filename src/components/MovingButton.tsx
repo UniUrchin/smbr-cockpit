@@ -7,7 +7,7 @@ import { ArrowForwardIcon } from "@chakra-ui/icons";
 import { Box, BoxProps, Button, Flex, Text } from "@chakra-ui/react";
 import { useState, useMemo, useRef } from "react";
 
-export const PlayButton = (props: BoxProps & { withIcon?: boolean }) => {
+export const MovingButton = ({ ...props }: BoxProps & { withicon?: number }) => {
   const [active, setActive] = useState(false);
 
   const PlayButtonBackgroundFrameSVG = (props: FrameSVGProps) => {
@@ -91,7 +91,7 @@ export const PlayButton = (props: BoxProps & { withIcon?: boolean }) => {
             <Text height="28px" color="text.secondary" fontFamily="monomaniacOne" fontSize="16px">
               {props.children || "Go Playground"}
             </Text>
-            {!props.withIcon || <ArrowForwardIcon color="text.secondary" boxSize="20px" />}
+            {!props.withicon || <ArrowForwardIcon color="text.secondary" boxSize="20px" />}
           </Flex>
         </Button>
         <PlayButtonBackgroundFrameSVG style={{ position: "absolute" }} />
