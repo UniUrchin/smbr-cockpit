@@ -4,6 +4,7 @@ import { AppLayoutContainer } from "@/app/_components/AppLayoutContainer";
 export const metadata: Metadata = {
   title: "SMBR Cockpit",
   description: "SMBR Cockpit - A web application that can run SMBR on a browser",
+  icons: [{ rel: "icon", url: "/images/smbr-cockpit-logo.ico" }],
 };
 
 export default function AppLayout({ children }: { children: React.ReactNode }) {

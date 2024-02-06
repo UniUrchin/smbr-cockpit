@@ -15,11 +15,11 @@ import { useSmbr } from "@/hooks/useSmbr";
 const SmbrCommandList: { name: string; description: string }[] = [
   {
     name: "しろくま",
-    description: "Increment the pointer (&gt;)",
+    description: "Increment the pointer (>)",
   },
   {
     name: "とんかつ",
-    description: "Decrement the pointer (&lt;)",
+    description: "Decrement the pointer (<)",
   },
   {
     name: "ぺんぎん?",
@@ -66,15 +66,15 @@ export default function PlaygroundPage() {
   const [input, setInput] = useState("");
   const [output, setOutput] = useState("");
 
-  const [playOpenMenuSound] = useSound("/sounds/open-menu.mp3");
+  const [playOpenPanelSound] = useSound("/sounds/open-panel.mp3");
   const [playButtonClickSound] = useSound("/sounds/button-click.mp3");
 
   const { execute } = useSmbr();
 
   useEffect(() => {
-    let tid = setTimeout(() => playOpenMenuSound(), 100);
+    let tid = setTimeout(() => playOpenPanelSound(), 100);
     return () => clearTimeout(tid);
-  }, [playOpenMenuSound]);
+  }, [playOpenPanelSound]);
 
   return (
     <Flex alignItems="center" flexDirection="column" height="100vh">
@@ -129,9 +129,8 @@ export default function PlaygroundPage() {
               width="100%"
             >
               <RunButton
-                aria-label="Run"
                 position="absolute"
-                top="0px"
+                top="8px"
                 right="-24px"
                 zIndex="docked"
                 onClick={() => {
@@ -196,9 +195,8 @@ export default function PlaygroundPage() {
                 tabNames={["Document", "Samples"]}
                 panelElements={[
                   <Flex
-                    key={"Code"}
+                    key={"Document"}
                     flexDirection="column"
-                    gap="16px"
                     overflow="scroll"
                     width="100%"
                     height="100%"
@@ -213,7 +211,12 @@ export default function PlaygroundPage() {
                     >
                       - What is SMBR?
                     </Text>
-                    <Flex width="100%" padding="16px" background="background.secondary">
+                    <Flex
+                      width="100%"
+                      margin="8px 0px 16px"
+                      padding="16px"
+                      background="background.secondary"
+                    >
                       {/* prettier-ignore */}
                       <Text color="text.primary.800" fontFamily="monomaniacOne" fontSize="16px">
                         summiko-brain(SMBR) is a Brainf**k derivative inspired by &quot;Sumikko Gurashi&quot;. <br />
@@ -230,7 +233,12 @@ export default function PlaygroundPage() {
                     >
                       - Rules of SMBR
                     </Text>
-                    <Flex width="100%" padding="16px" background="background.secondary">
+                    <Flex
+                      width="100%"
+                      margin="8px 0px 16px"
+                      padding="16px"
+                      background="background.secondary"
+                    >
                       {/* prettier-ignore */}
                       <Text color="text.primary.800" fontFamily="monomaniacOne" fontSize="16px">
                       ・ Any characters other than the 11 keywords listed above will be ignored by the interpreter. <br/><br/>
@@ -250,6 +258,7 @@ export default function PlaygroundPage() {
                       flexDirection="column"
                       gap="16px"
                       width="100%"
+                      margin="8px 0px 0px"
                       padding="16px"
                       background="background.secondary"
                     >
@@ -259,12 +268,7 @@ export default function PlaygroundPage() {
                       </Text>
 
                       {SmbrCommandList.map((command) => (
-                        <Flex
-                          key={command.name}
-                          justifyContent="space-between"
-                          flexDirection="row"
-                          gap="16px"
-                        >
+                        <Flex key={command.name} justifyContent="space-between" flexDirection="row">
                           <Text
                             color="text.primary.800"
                             fontFamily="monomaniacOne"
@@ -274,7 +278,7 @@ export default function PlaygroundPage() {
                             ・ {command.name}:{" "}
                           </Text>
                           <Text
-                            width="320px"
+                            width="400px"
                             color="text.primary.800"
                             fontFamily="monomaniacOne"
                             fontSize="16px"
@@ -285,14 +289,14 @@ export default function PlaygroundPage() {
                       ))}
                     </Flex>
                   </Flex>,
-                  <Flex
-                    key={"Code"}
-                    width="100%"
-                    height="640px"
-                    backgroundColor="background.primary"
-                  >
-                    <Text color="text.white" fontFamily="monomaniacOne" fontSize="24px">
-                      Construction 🚧
+                  <Flex key={"Samples"} width="100%" backgroundColor="background.primary">
+                    <Text
+                      padding="16px"
+                      color="text.secondary"
+                      fontFamily="monomaniacOne"
+                      fontSize="24px"
+                    >
+                      🚧 Construction
                     </Text>
                   </Flex>,
                 ]}
