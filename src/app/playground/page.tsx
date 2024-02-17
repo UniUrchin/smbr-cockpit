@@ -242,9 +242,9 @@ export default function PlaygroundPage() {
                     >
                       {/* prettier-ignore */}
                       <Text color="text.primary.800" fontFamily="monomaniacOne" fontSize="16px">
-                      ・ Any characters other than the 11 keywords listed above will be ignored by the interpreter. <br/><br/>
-                      ・ All memory blocks on the &quot;array&quot; are set to zero at the beginning of the program. And the memory pointer starts out on the very left most memory block. <br/><br/>
-                      ・ Loops may be nested as many times as you want. But all &quot;えびふらいのしっぽ&quot; must have a corresponding &quot;あじふらいのしっぽ&quot;.
+                        ・ Any characters other than the 11 keywords listed above will be ignored by the interpreter. <br/><br/>
+                        ・ All memory blocks on the &quot;array&quot; are set to zero at the beginning of the program. And the memory pointer starts out on the very left most memory block. <br/><br/>
+                        ・ Loops may be nested as many times as you want. But all &quot;えびふらいのしっぽ&quot; must have a corresponding &quot;あじふらいのしっぽ&quot;.
                       </Text>
                     </Flex>
                     <Text
@@ -290,15 +290,56 @@ export default function PlaygroundPage() {
                       ))}
                     </Flex>
                   </Flex>,
-                  <Flex key={"Samples"} width="100%" backgroundColor="background.primary">
+                  <Flex
+                    key={"Samples"}
+                    flexDirection="column"
+                    overflow="scroll"
+                    width="100%"
+                    height="100%"
+                    padding="16px 16px"
+                    backgroundColor="background.primary"
+                  >
                     <Text
-                      padding="16px"
+                      padding="0 4px"
                       color="text.secondary"
                       fontFamily="monomaniacOne"
                       fontSize="24px"
                     >
-                      🚧 Construction
+                      - Print &quot;Hello, world!&quot;
                     </Text>
+                    <Flex
+                      width="100%"
+                      margin="8px 0px 16px"
+                      padding="16px"
+                      background="background.secondary"
+                    >
+                      {/* prettier-ignore */}
+                      <Text color="text.primary.800" fontFamily="monomaniacOne" fontSize="16px">
+                        ぺんぎん?ぺんぎん?ぺんぎん?ぺんぎん?ぺんぎん?ぺんぎん?ぺんぎん?ぺんぎん?ぺんぎん? <br />
+                        <br />
+                        えびふらいのしっぽ <br />
+                        &#009;とかげ <br />
+                        &#009;しろくまぺんぎん?ぺんぎん?ぺんぎん?ぺんぎん?ぺんぎん?ぺんぎん?ぺんぎん?ぺんぎん? <br />
+                        &#009;しろくまぺんぎん?ぺんぎん?ぺんぎん?ぺんぎん?ぺんぎん?ぺんぎん?ぺんぎん?ぺんぎん?ぺんぎん?ぺんぎん?ぺんぎん? <br />
+                        &#009;しろくまぺんぎん?ぺんぎん?ぺんぎん?ぺんぎん?ぺんぎん? <br />
+                        &#009;とんかつとんかつとんかつ <br />
+                        あじふらいのしっぽ <br />
+                        <br />
+                        しろくまねこ <br />
+                        しろくまぺんぎん?ぺんぎん?ねこ <br />
+                        ぺんぎん?ぺんぎん?ぺんぎん?ぺんぎん?ぺんぎん?ぺんぎん?ぺんぎん?ねこ <br />
+                        ねこ <br />
+                        ぺんぎん?ぺんぎん?ぺんぎん?ねこ <br />
+                        しろくまとかげねこ <br />
+                        とかげとかげとかげとかげとかげとかげとかげとかげとかげとかげとかげとかげねこ <br />
+                        とんかつぺんぎん?ぺんぎん?ぺんぎん?ぺんぎん?ぺんぎん?ぺんぎん?ぺんぎん?ぺんぎん?ねこ <br />
+                        とかげとかげとかげとかげとかげとかげとかげとかげねこ <br />
+                        ぺんぎん?ぺんぎん?ぺんぎん?ねこ <br />
+                        とかげとかげとかげとかげとかげとかげねこ <br />
+                        とかげとかげとかげとかげとかげとかげとかげとかげねこ <br />
+                        しろくまぺんぎん?ねこ <br />
+                      </Text>
+                    </Flex>
                   </Flex>,
                 ]}
               />

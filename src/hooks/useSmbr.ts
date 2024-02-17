@@ -10,9 +10,7 @@ export const useSmbr = () => {
     initWasm();
   }, []);
 
-  const execute = (code: string, input: string) => {
-    return run(code, input);
-  };
+  const execute = (code: string, input: string) => run(code, input);
 
   return { execute };
 };
