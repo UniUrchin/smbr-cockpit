@@ -4,7 +4,7 @@ use std::panic;
 use thiserror::Error as ThisError;
 use wasm_bindgen::prelude::*;
 
-const MEMORY_SIZE: usize = 30000;
+const MEMORY_SIZE: usize = 10000;
 const MAX_POINTER: usize = MEMORY_SIZE - 1;
 const MAX_VALUE: u8 = 255;
 

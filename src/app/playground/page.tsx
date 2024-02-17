@@ -318,11 +318,11 @@ export default function PlaygroundPage() {
                         ぺんぎん?ぺんぎん?ぺんぎん?ぺんぎん?ぺんぎん?ぺんぎん?ぺんぎん?ぺんぎん?ぺんぎん? <br />
                         <br />
                         えびふらいのしっぽ <br />
-                        &#009;とかげ <br />
-                        &#009;しろくまぺんぎん?ぺんぎん?ぺんぎん?ぺんぎん?ぺんぎん?ぺんぎん?ぺんぎん?ぺんぎん? <br />
-                        &#009;しろくまぺんぎん?ぺんぎん?ぺんぎん?ぺんぎん?ぺんぎん?ぺんぎん?ぺんぎん?ぺんぎん?ぺんぎん?ぺんぎん?ぺんぎん? <br />
-                        &#009;しろくまぺんぎん?ぺんぎん?ぺんぎん?ぺんぎん?ぺんぎん? <br />
-                        &#009;とんかつとんかつとんかつ <br />
+                        　とかげ <br />
+                        　しろくまぺんぎん?ぺんぎん?ぺんぎん?ぺんぎん?ぺんぎん?ぺんぎん?ぺんぎん?ぺんぎん? <br />
+                        　しろくまぺんぎん?ぺんぎん?ぺんぎん?ぺんぎん?ぺんぎん?ぺんぎん?ぺんぎん?ぺんぎん?ぺんぎん?ぺんぎん?ぺんぎん? <br />
+                        　しろくまぺんぎん?ぺんぎん?ぺんぎん?ぺんぎん?ぺんぎん? <br />
+                        　とんかつとんかつとんかつ <br />
                         あじふらいのしっぽ <br />
                         <br />
                         しろくまねこ <br />
@@ -338,6 +338,29 @@ export default function PlaygroundPage() {
                         とかげとかげとかげとかげとかげとかげねこ <br />
                         とかげとかげとかげとかげとかげとかげとかげとかげねこ <br />
                         しろくまぺんぎん?ねこ <br />
+                      </Text>
+                    </Flex>
+                    <Text
+                      padding="0 4px"
+                      color="text.secondary"
+                      fontFamily="monomaniacOne"
+                      fontSize="24px"
+                    >
+                      - Directly output the input (Echo)
+                    </Text>
+                    <Flex
+                      width="100%"
+                      margin="8px 0px 16px"
+                      padding="16px"
+                      background="background.secondary"
+                    >
+                      {/* prettier-ignore */}
+                      <Text color="text.primary.800" fontFamily="monomaniacOne" fontSize="16px">
+                        たぴおか <br />
+                        えびふらいのしっぽ <br />
+                        　ねこ <br />
+                        　&#009;たぴおか <br />
+                        あじふらいのしっぽ <br />
                       </Text>
                     </Flex>
                   </Flex>,
