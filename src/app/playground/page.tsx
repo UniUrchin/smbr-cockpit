@@ -129,6 +129,7 @@ export default function PlaygroundPage() {
               width="100%"
             >
               <RunButton
+                aria-label="run"
                 position="absolute"
                 top="8px"
                 right="-24px"

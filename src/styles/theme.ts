@@ -109,5 +109,12 @@ export const theme = extendTheme({
         secondary: "rgba(237, 238, 234, 0.3)",
       },
     },
+    button: {
+      primary: {
+        400: "#BAEB54",
+        600: "#A2D445",
+        700: "#81A935",
+      },
+    },
   },
 });
